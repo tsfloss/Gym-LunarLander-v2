@@ -20,6 +20,8 @@ where render_every sets how often the environment should be rendered.
 ## Technical Information
 The environment is solved using a Deep Q Learning implementation. Due to the immense state space, conventional Q learning using a Q value table is not feasible. Hence we use a neural network to predict future actions and train the net using the Q learning algorithm.
 
+The model starts out with a lot of random actions as a means of exploration (epsilon decay). Every couple of actions it trains the neural network using the rewards and Q learning algorithm. 
+
 The neural net consists of an input layer of 512 nodes that takes the 8 input values from the environment using relu activation, followed by a hidden layer of 256 nodes with relu activation. The Output layer outputs 4 values, one for each action, using linear activation.
 
 The most optimal hyperparameters were found to be:
