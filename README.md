@@ -31,3 +31,9 @@ epsilon = 1.0
 epsilon_decay = 0.995
 gamma = 0.99
 ```
+
+After a bit more than 250 episodes the model starts to learn how to land. At slightly less than 600 episodes it has solved the enivornment and can land pretty much all the time.
+
+The graph of the rewards shows a continuous learning process:
+![RewardGraph](/images/LunarLander-graph.png)
+Format: ![Alt Text](url)
