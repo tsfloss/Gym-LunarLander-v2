@@ -36,4 +36,4 @@ After a bit more than 250 episodes the model starts to learn how to land. At sli
 
 The graph of the rewards shows a continuous learning process:
 ![RewardGraph](/images/LunarLander-graph.png)
-Format: ![Alt Text](url)
+
