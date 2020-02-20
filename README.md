@@ -16,3 +16,16 @@ Once the model is trained or a saved model is preset. It can be tested for a num
 test(filename, test_episodes, render_every)
 ```
 where render_every sets how often the environment should be rendered.
+
+## Technical Information
+The environment is solved using a Deep Q Learning implementation. Due to the immense state space, conventional Q learning using a Q value table is not feasible. Hence we use a neural network to predict future actions and train the net using the Q learning algorithm.
+
+The neural net consists of an input layer of 512 nodes that takes the 8 input values from the environment using relu activation, followed by a hidden layer of 256 nodes with relu activation. The Output layer outputs 4 values, one for each action, using linear activation.
+
+The most optimal hyperparameters were found to be:
+```
+learning_rate = 0.001
+epsilon = 1.0
+epsilon_decay = 0.995
+gamma = 0.99
+```
