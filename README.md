@@ -17,6 +17,8 @@ test(filename, test_episodes, render_every)
 ```
 where render_every sets how often the environment should be rendered.
 
+A pretrained model (see graph below) has been included and can be tested.
+
 ## Technical Information
 The environment is solved using a Deep Q Learning implementation. Due to the immense state space, conventional Q learning using a Q value table is not feasible. Hence we use a neural network to predict future actions and train the net using the Q learning algorithm.
 
