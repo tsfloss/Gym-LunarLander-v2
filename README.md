@@ -11,7 +11,7 @@ train(training_episodes)
 The model trains until all episodes have passed or until the problem is considered solved, when 100 subsequent episodes have a mean reward (rolling mean reward) of 200. Once done, the model will be saved to a file.
 
 ## Testing
-Once the model is trained or a saved model is preset. It can be tested for a number of test_episodes by:
+Once the model is trained or a saved model is preset, it can be tested for a number of test_episodes by:
 ```
 test(filename, test_episodes, render_every)
 ```
