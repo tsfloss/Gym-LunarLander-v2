@@ -74,20 +74,23 @@ class DQNAgent:
         for episode in range(1,episodes+1):
             #reset values for episode
             episode_reward = 0
-            current_state = env.reset().reshape(1,-1)
+            current_state = self.env.reset().reshape(1,-1)
             #run a maximum of steps per episode
             for step in range(1000):
                 #render condition
-#                if episode % 100 == 0:
-#                    env.render()
+                if (episode - 1) % 100 == 0:
+                    self.env.render()
                 #get action from model or random
                 action = self.take_action(current_state)
-                new_state, reward, done, _ = env.step(action)
+                new_state, reward, done, _ = self.env.step(action)
                 new_state = new_state.reshape(1,-1)
                 #update reward and buffer
                 episode_reward += reward
                 self.deck.append((current_state, action, reward, new_state, done))
                 current_state = new_state
+                #if reward is already low before crashing, stop episode
+                if episode_reward < -200:
+                    break
                 #fit the model every step_per_fit steps, with early stopping protection
                 if step % self.steps_per_fit == 0 and np.mean(self.train_rewards[-10:]) < 180:
                     self.DQNfit()
@@ -133,9 +136,7 @@ def test_trained_model(env,trained_model,test_episodes, render_every):
             new_state = new_state.reshape(1,-1)
             #update reward
             episode_reward += reward
-            #if reward is already low before crashing, stop episode
-            if episode_reward < -200:
-                break
+            
             current_state = new_state
             #if episode is done quit the episode
             if done:
